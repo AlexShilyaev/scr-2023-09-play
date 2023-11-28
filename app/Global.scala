@@ -17,10 +17,7 @@ object Global extends  GlobalSettings{
     Guice.createInjector(moduleInstances :_*)
   }
 
-  override def getControllerInstance[A](controllerClass: Class[A]): A =
-    injector.getInstance(controllerClass)
-
-  override def onStart(app: Application): Unit = {
+   override def onStart(app: Application): Unit = {
     initializeSqueryl()
     performMigration()
 
