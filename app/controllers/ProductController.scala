@@ -2,15 +2,15 @@ package controllers
 
 import com.google.inject.Inject
 import controllers.actions.authAction
-import models.LoginService
+import models.services.LoginService
 import models.dto.ProductDTO
 import play.api.libs.json.Json
 import play.api.mvc.{Action, AnyContent, Controller}
 import models.services.ProductService
 
-class ProductController @Inject()(loginService: LoginService) extends Controller{
+class ProductController extends Controller{
 
-  def list() = authAction(loginService){ ur =>
+  def list() = Action {
     Ok(views.html.products.list(List(
       ProductDTO("1", "foo1", "bar1"),
       ProductDTO("2", "foo2", "bar2"),

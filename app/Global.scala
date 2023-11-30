@@ -18,6 +18,7 @@ object Global extends  GlobalSettings{
   }
 
    override def onStart(app: Application): Unit = {
+     Class.forName("org.postgresql.Driver")
     initializeSqueryl()
     performMigration()
 

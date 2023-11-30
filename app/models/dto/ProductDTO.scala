@@ -1,6 +1,6 @@
 package models.dto
 
-import models.entities.{ProductItem, Product}
+import models.dao.entities.{Product, ProductItem}
 import play.api.libs.json.{Json, Reads, Writes}
 case class ProductDTO(id: String,
                    title: String,
@@ -44,8 +44,8 @@ object ProductItemDTO{
     from.count,
     from.isExists
   )
-  def toProductItem(productItemDTO: ProductItemDTO, productId: String = null): ProductItem = ProductItem(
-    productItemDTO.id, productItemDTO.priceValue, productItemDTO.count, productItemDTO.isExists, productId)
+  def toProductItem(productItemDTO: ProductItemDTO, productId: String): ProductItem = ProductItem(
+    productItemDTO.id, productId, productItemDTO.priceValue, productItemDTO.count, productItemDTO.isExists)
 
   implicit val reads: Reads[ProductItemDTO] = Json.reads[ProductItemDTO]
 

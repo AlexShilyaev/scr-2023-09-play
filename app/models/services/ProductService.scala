@@ -1,16 +1,16 @@
 package models.services
 
+import models.dao.repositories.ProductRepository
 import models.dto.{ProductDTO, ProductItemDTO}
-import models.repositories.ProductRepository
 object ProductService {
 
   private val productRepository = new ProductRepository()
   def create(productDTO: ProductDTO) = {
-productRepository.insert(ProductDTO.toProduct(productDTO), productDTO.productItems.map(e => ProductItemDTO.toProductItem(e)))
+productRepository.insert(ProductDTO.toProduct(productDTO), productDTO.productItems.map(e => ProductItemDTO.toProductItem(e, productDTO.id)))
   }
 
   def update(productDTO: ProductDTO) = {
-    productRepository.insert(ProductDTO.toProduct(productDTO), productDTO.productItems.map(e => ProductItemDTO.toProductItem(e)))
+    productRepository.insert(ProductDTO.toProduct(productDTO), productDTO.productItems.map(e => ProductItemDTO.toProductItem(e, productDTO.id)))
   }
 
   def delete(id: String) = {
