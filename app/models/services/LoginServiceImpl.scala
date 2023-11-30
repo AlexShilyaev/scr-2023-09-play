@@ -1,10 +1,7 @@
-package models
-
-trait LoginService {
-  def checkEmail(email: String): Boolean
-}
+package models.services
 
 class LoginServiceImpl extends LoginService {
   private val validUserNames = Set("user@gmail.com")
+
   override def checkEmail(email: String): Boolean = validUserNames.contains(email)
 }

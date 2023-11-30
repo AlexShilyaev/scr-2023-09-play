@@ -25,3 +25,9 @@ GET   /phonebook/list        @controllers.PhoneBookController.list()
 # Products
 
 GET   /products/list         @controllers.ProductController.list()
+GET   /products/list2        @controllers.ProductController.list2()
+
+POST   /products             @controllers.ProductController.create()
+PUT    /products             @controllers.ProductController.update()
+DELETE /products/:productId  @controllers.ProductController.delete(productId)
+GET    /products/:title      @controllers.ProductController.search(title)
